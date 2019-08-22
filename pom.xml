@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.springframework.data</groupId>
-    <artifactId>spring-data-elasticsearch</artifactId>
-    <version>3.2.0.BUILD-SNAPSHOT</version>
+	<groupId>org.springframework.data</groupId>
+	<artifactId>spring-data-elasticsearch</artifactId>
+	<version>7.0.0.IBOT-RELEASE</version>
 
 	<parent>
 		<groupId>org.springframework.data.build</groupId>
@@ -19,7 +21,7 @@
 
 	<properties>
 		<commonslang>2.6</commonslang>
-		<elasticsearch>6.8.1</elasticsearch>
+		<elasticsearch>7.3.0</elasticsearch>
 		<log4j>2.9.1</log4j>
 		<springdata.commons>2.2.0.BUILD-SNAPSHOT</springdata.commons>
 		<java-module-name>spring.data.elasticsearch</java-module-name>
@@ -52,6 +54,15 @@
 				<role>Developer</role>
 			</roles>
 			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<id>mksasi</id>
+			<name>Sasikumar</name>
+			<email>mksasi at gmail.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+530</timezone>
 		</developer>
 	</developers>
 
@@ -248,7 +259,11 @@
 			<version>3.0-alpha-1</version>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.projectreactor</groupId>
+			<artifactId>reactor-spring</artifactId>
+			<version>1.0.1.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -261,9 +276,8 @@
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
 			</plugin>
-			<!--
-			please do not remove this configuration for surefire - we need that to avoid issue with jar hell
-			-->
+			<!-- please do not remove this configuration for surefire - we need that 
+				to avoid issue with jar hell -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -296,9 +310,10 @@
 								<module name="Checker">
 
 									<!-- Configure checker to use UTF-8 encoding -->
-									<property name="charset" value="UTF-8"/>
+									<property name="charset" value="UTF-8" />
 
-									<module name="io.spring.nohttp.checkstyle.check.NoHttpCheck"/>
+									<module
+										name="io.spring.nohttp.checkstyle.check.NoHttpCheck" />
 								</module>
 							</checkstyleRules>
 							<includes>**/*</includes>

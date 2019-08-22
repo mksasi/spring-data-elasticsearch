@@ -173,7 +173,7 @@ public class ReactiveElasticsearchTemplate implements ReactiveElasticsearchOpera
 
 				Object parentId = entity.getParentId();
 				if (parentId != null) {
-					request.parent(converter.convertId(parentId));
+					////request.parent(converter.convertId(parentId));
 				}
 			}
 

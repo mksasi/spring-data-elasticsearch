@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
@@ -77,6 +78,8 @@ import org.elasticsearch.action.support.master.AcknowledgedResponse;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.Request;
+import org.elasticsearch.common.bytes.BytesReference;
+import org.elasticsearch.common.document.DocumentField;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.DeprecationHandler;
 import org.elasticsearch.common.xcontent.NamedXContentRegistry;
@@ -545,10 +548,9 @@ public class DefaultReactiveElasticsearchClient implements ReactiveElasticsearch
 	// --> Private Response helpers
 
 	private static GetResult getResponseToGetResult(GetResponse response) {
-
 		return new GetResult(response.getIndex(), response.getType(), response.getId(), response.getSeqNo(),
 				response.getPrimaryTerm(), response.getVersion(), response.isExists(), response.getSourceAsBytesRef(),
-				response.getFields());
+				response.getFields(), response.getFields());
 	}
 
 	// -->

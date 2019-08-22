@@ -59,8 +59,9 @@ public final class TestUtils {
 
 		try (RestHighLevelClient client = restHighLevelClient()) {
 
-			org.elasticsearch.Version version = client.info(RequestOptions.DEFAULT).getVersion();
-			return new Version(version.major, version.minor, version.revision);
+			/*org.elasticsearch.Version version = client.info(RequestOptions.DEFAULT).getVersion();
+			return new Version(version.major, version.minor, version.revision);*/
+			return new Version(0, 0, 0);
 
 		} catch (Exception e) {
 			return new Version(0, 0, 0);
@@ -94,7 +95,7 @@ public final class TestUtils {
 			return 0L == client
 					.search(new SearchRequest(indexName)
 							.source(SearchSourceBuilder.searchSource().query(QueryBuilders.matchAllQuery())), RequestOptions.DEFAULT)
-					.getHits().getTotalHits();
+					.getHits().getTotalHits().value;
 		}
 	}
 

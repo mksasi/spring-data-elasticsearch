@@ -519,7 +519,7 @@ public class ElasticsearchTemplate implements ElasticsearchOperations, EsClient<
 		if (elasticsearchQuery != null) {
 			countRequestBuilder.setQuery(elasticsearchQuery);
 		}
-		return countRequestBuilder.execute().actionGet().getHits().getTotalHits();
+		return countRequestBuilder.execute().actionGet().getHits().getTotalHits().value;
 	}
 
 	private long doCount(SearchRequestBuilder searchRequestBuilder, QueryBuilder elasticsearchQuery,
@@ -532,7 +532,7 @@ public class ElasticsearchTemplate implements ElasticsearchOperations, EsClient<
 		if (elasticsearchFilter != null) {
 			searchRequestBuilder.setPostFilter(elasticsearchFilter);
 		}
-		return searchRequestBuilder.execute().actionGet().getHits().getTotalHits();
+		return searchRequestBuilder.execute().actionGet().getHits().getTotalHits().value;
 	}
 
 	private <T> SearchRequestBuilder prepareCount(Query query, Class<T> clazz) {
@@ -1184,7 +1184,7 @@ public class ElasticsearchTemplate implements ElasticsearchOperations, EsClient<
 			}
 
 			if (query.getParentId() != null) {
-				indexRequestBuilder.setParent(query.getParentId());
+				////indexRequestBuilder.setParent(query.getParentId());
 			}
 
 			return indexRequestBuilder;
